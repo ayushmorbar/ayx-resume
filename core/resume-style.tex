@@ -1,0 +1,81 @@
+% ========================================================
+% Styling + packages
+% ========================================================
+% Loaded by main.tex after config/resume-config.tex.
+
+% ----- Encoding & Fonts (ATS-friendly) -----
+\usepackage[T1]{fontenc} % Better glyph encoding / Unicode mapping (pdfLaTeX)
+\usepackage{lmodern} % Latin Modern fonts (clean, ATS-safe, scalable)
+
+% ----- Page Layout -----
+\usepackage[
+    letterpaper,
+    margin=0.45in
+]{geometry}
+
+% ----- Formatting & Styling -----
+\usepackage{titlesec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+% Optional typography polish (toggle in config/resume-config.tex)
+\ifUseMicrotype
+    \usepackage{microtype}
+\fi
+
+\usepackage[hidelinks]{hyperref}
+
+% ----- PDF Metadata -----
+\hypersetup{
+    unicode=true,
+    pdftitle={\PDFTitle},
+    pdfauthor={\PDFAuthor},
+    pdfsubject={\PDFSubject},
+    pdfkeywords={\PDFKeywords}
+}
+
+% ----- Icons & Symbols -----
+\usepackage{fontawesome6}
+\usepackage{amssymb}
+
+% ----- ATS Parsability -----
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% ----- Font options (optional) -----
+% Sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+% Serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+% ----- Page style -----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\setlength{\headheight}{14pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0in}
+
+% ----- Global list spacing -----
+\setlist[itemize]{noitemsep, topsep=2pt, parsep=0pt, partopsep=0pt}
+
+% ----- Section formatting -----
+\titleformat{\section}
+    {\vspace{-4pt}\scshape\raggedright\large}
+    {}
+    {0em}
+    {}
+    [\color{black}\titlerule\vspace{-5pt}]

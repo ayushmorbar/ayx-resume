@@ -1,0 +1,133 @@
+% ========================================================
+% Template macros (avoid editing unless you’re maintaining the template)
+% ========================================================
+
+% ----- Empty-string helpers -----
+\newcommand{\IfEmptyTF}[3]{%
+    \if\relax\detokenize{#1}\relax #2\else #3\fi
+}
+% Like \IfEmptyTF, but tests the *expanded* value of the argument.
+\newcommand{\IfEmptyTFExp}[3]{%
+    \begingroup
+        \edef\ResumeTmp{#1}%
+    \expandafter\endgroup
+    \expandafter\IfEmptyTF\expandafter{\ResumeTmp}{#2}{#3}%
+}
+
+% ----- Header + optional summary (driven by config/resume-config.tex) -----
+\newcommand{\ResumeSep}{\textbar}
+\newif\ifResumeHasHeaderItem
+
+% Prints a separator only between *rendered* header items.
+\newcommand{\ResumeHeaderSep}{%
+    \ifResumeHasHeaderItem\ \ResumeSep\ \fi
+    \ResumeHasHeaderItemtrue
+}
+
+% Link helper: if the URL is empty, print text only.
+\newcommand{\ResumeLinkOrText}[2]{%
+    \IfEmptyTFExp{#1}{#2}{\href{#1}{#2}}%
+}
+
+\newcommand{\ResumeHeader}{%
+    \begin{center}
+        {\Huge\bfseries
+            \IfEmptyTFExp{\ResumeName}{Your Name}{\ResumeName}\\[1pt]
+        }
+
+        \IfEmptyTFExp{\ResumeTagline}{}{\small \ResumeTagline\\[2pt]}
+
+        \small
+        \ResumeHasHeaderItemfalse
+
+        \ifATS
+            \IfEmptyTFExp{\ResumePhone}{}{\ResumeHeaderSep\href{\ResumePhoneLink}{\ResumePhone}}%
+            \IfEmptyTFExp{\ResumeEmail}{}{\ResumeHeaderSep\href{\ResumeEmailLink}{\ResumeEmail}}%
+            \IfEmptyTFExp{\ResumeLocationText}{}{\ResumeHeaderSep\ResumeLinkOrText{\ResumeLocation}{\ResumeLocationText}}%
+            \IfEmptyTFExp{\ResumeLinkedInURL}{}{\ResumeHeaderSep\href{\ResumeLinkedInURL}{\ResumeLinkedInText}}%
+            \IfEmptyTFExp{\ResumeGithubURL}{}{\ResumeHeaderSep\href{\ResumeGithubURL}{\ResumeGithubText}}%
+            \ifShowWebsite
+                \IfEmptyTFExp{\ResumeWebsiteURL}{}{\ResumeHeaderSep\href{\ResumeWebsiteURL}{\ResumeWebsiteText}}%
+            \fi
+        \else
+            \IfEmptyTFExp{\ResumePhone}{}{\ResumeHeaderSep\faIcon{phone}\ \href{\ResumePhoneLink}{\ResumePhone}}%
+            \IfEmptyTFExp{\ResumeEmail}{}{\ResumeHeaderSep\faIcon{envelope}\ \href{\ResumeEmailLink}{\ResumeEmail}}%
+            \IfEmptyTFExp{\ResumeLocationText}{}{\ResumeHeaderSep\faIcon{location-dot}\ \ResumeLinkOrText{\ResumeLocation}{\ResumeLocationText}}%
+            \IfEmptyTFExp{\ResumeLinkedInURL}{}{\ResumeHeaderSep\faIcon{linkedin}\ \href{\ResumeLinkedInURL}{\ResumeLinkedInText}}%
+            \IfEmptyTFExp{\ResumeGithubURL}{}{\ResumeHeaderSep\faIcon{github}\ \href{\ResumeGithubURL}{\ResumeGithubText}}%
+            \ifShowWebsite
+                \IfEmptyTFExp{\ResumeWebsiteURL}{}{\ResumeHeaderSep\faIcon{link}\ \href{\ResumeWebsiteURL}{\ResumeWebsiteText}}%
+            \fi
+        \fi
+    \end{center}
+}
+
+\newcommand{\ResumeSummarySection}{%
+    \IfEmptyTFExp{\ResumeSummary}{}{%
+        \section{Summary}
+        \small
+        \noindent \ResumeSummary
+    }%
+}
+
+% ----- Optional project links (GitHub / Demo) -----
+% Usage inside \resumeProjectHeading:
+%   {\textbf{MyProject}\ProjectLinksAuto{https://github.com/user/repo}{https://demo.example.com} $|$ \emph{...}}
+% Provide either URL (or both). Leave unused URL empty: {}.
+\newcommand{\ProjectLinks}[2]{%
+    \IfEmptyTF{#1}{%
+        \IfEmptyTF{#2}{}{\ (\href{#2}{Demo})}%
+    }{%
+        \IfEmptyTF{#2}{\ (\href{#1}{GitHub})}{\ (\href{#1}{GitHub}\ \textbar\ \href{#2}{Demo})}%
+    }%
+}
+\newcommand{\ProjectLinksIcon}[2]{%
+    \IfEmptyTF{#1}{%
+        \IfEmptyTF{#2}{}{\ (\href{#2}{\faIcon{link}})}%
+    }{%
+        \IfEmptyTF{#2}{\ (\href{#1}{\faIcon{github}})}{\ (\href{#1}{\faIcon{github}}\ \textbar\ \href{#2}{\faIcon{link}})}%
+    }%
+}
+
+% Auto-select link style based on \ifATS (defined in config/resume-config.tex)
+\newcommand{\ProjectLinksAuto}[2]{%
+    \ifATS\ProjectLinks{#1}{#2}\else\ProjectLinksIcon{#1}{#2}\fi
+}
+
+% ----- Resume building blocks -----
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+
+% Use tabularx so the left column can wrap while dates stay right-aligned.
+\newcommand{\resumeSubheading}[4]{%
+    \item
+    \begin{tabularx}{\textwidth}{@{}Xr@{}}
+        \textbf{#1} & #2\\
+        \textit{\small #3} & \textit{\small #4}\\
+    \end{tabularx}
+}
+
+\newcommand{\resumeSubSubheading}[2]{%
+    \item
+    \begin{tabularx}{\textwidth}{@{}Xr@{}}
+        \textit{\small #1} & \textit{\small #2}\\
+    \end{tabularx}
+}
+
+\newcommand{\resumeProjectHeading}[2]{%
+    \item
+    \begin{tabularx}{\textwidth}{@{}Xr@{}}
+        \small #1 & #2\\
+    \end{tabularx}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
+
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% List wrappers (optional left margin override)
+\newcommand{\resumeSubHeadingListStart}[1][0.15in]{\begin{itemize}[leftmargin=#1, label={}, topsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}[1][0.2in]{\begin{itemize}[leftmargin=#1]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+\newcommand{\resumeSkillListStart}[1][0.15in]{\begin{itemize}[leftmargin=#1,label={}, topsep=0pt]}
+\newcommand{\resumeSkillListEnd}{\end{itemize}}

@@ -1,0 +1,38 @@
+%-----------PROJECTS (USER)-----------
+% Your real projects content lives here.
+% Toggle rendering in config/resume-config.tex via \TemplateModetrue / \TemplateModefalse.
+
+%-----------PROJECTS-----------
+% Add entries using:
+%   \resumeProjectHeading{\textbf{Name} $|$ \emph{Tech}}{Dates}
+% Optional links: \ProjectLinksAuto{<github>}{<demo>} (use {} to omit).
+
+\section{Projects}
+
+\resumeSubHeadingListStart
+
+% Optional links examples (use either, or both; remove any by replacing with {}):
+%   \ProjectLinksAuto{https://github.com/USERNAME/REPO}{https://demo.example.com}
+%   \ProjectLinks{https://github.com/USERNAME/REPO}{}
+%   \ProjectLinks{}{https://demo.example.com}
+\resumeProjectHeading
+    {\textbf{Project Name}\ProjectLinksAuto{https://github.com/USERNAME/REPO}{https://demo.example.com} $|$ \emph{Tech 1, Tech 2, Tech 3}}
+    {Mon YYYY -- Mon YYYY}
+
+    \resumeItemListStart
+        \resumeItem{One-line description of the project and what it does}
+        \resumeItem{Hard thing you implemented (scaling, ML model, caching, auth, streaming, etc.)}
+        \resumeItem{Impact (users, stars, latency improvement, revenue, accuracy, etc.)}
+    \resumeItemListEnd
+
+\resumeProjectHeading
+    {\textbf{Project Name}\ProjectLinksAuto{}{} $|$ \emph{Tech 1, Tech 2}}
+    {Mon YYYY -- Mon YYYY}
+
+    \resumeItemListStart
+        \resumeItem{What you built / contributed}
+        \resumeItem{Technical detail / architecture}
+        \resumeItem{Outcome / impact}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd

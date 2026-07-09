@@ -1,0 +1,19 @@
+% ========================================================
+% Resume config wrapper (EDIT ONLY THE MODE SWITCH HERE)
+% ========================================================
+% This file *selects* between:
+%   - config/resume-config.template.tex (original template placeholders)
+%   - config/resume-config.user.tex     (your real resume identity/contact/toggles)
+%
+% How to use:
+%   \TemplateModetrue  -> loads the template config + template section files
+%   \TemplateModefalse -> loads your user config + your *.user.tex section files
+
+\newif\ifTemplateMode
+\TemplateModetrue
+
+\ifTemplateMode
+  \input{config/resume-config.template}
+\else
+  \input{config/resume-config.user}
+\fi

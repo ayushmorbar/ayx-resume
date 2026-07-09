@@ -1,0 +1,66 @@
+% ========================================================
+% Template configuration (DO NOT EDIT)
+% ========================================================
+% This file keeps the original template's identity/contact placeholders.
+% When \TemplateModetrue, config/resume-config.tex will load this file.
+
+% ----- Identity -----
+% Tip: set fields to empty (e.g., {}) to hide them.
+\newcommand{\ResumeName}{Your Name}
+\newcommand{\ResumeTagline}{Your Title / Focus (e.g., Software Engineer | ML)}
+
+% Optional summary (2--3 lines). Leave empty ({}) to hide the section.
+\newcommand{\ResumeSummary}{% e.g., Backend engineer focused on AI/ML systems. Built X. Interested in Y.
+}
+
+% ----- Contact -----
+\newcommand{\ResumePhone}{+1 (XXX) XXX-XXXX}
+\newcommand{\ResumePhoneLink}{tel:+1-000-000-0000}
+\newcommand{\ResumeEmail}{you@example.com}
+\newcommand{\ResumeEmailLink}{mailto:you@example.com}
+
+% Optional location for the header (leave empty to hide)
+% \ResumeLocation is the link target (optional); \ResumeLocationText is what prints.
+\newcommand{\ResumeLocation}{} % e.g., https://maps.google.com/?q=San+Francisco,+CA
+\newcommand{\ResumeLocationText}{} % e.g., San Francisco, CA
+
+% Display text vs URL can differ (nice for ATS and readability)
+\newcommand{\ResumeLinkedInText}{linkedin.com/in/yourhandle}
+\newcommand{\ResumeLinkedInURL}{https://linkedin.com/in/yourhandle}
+\newcommand{\ResumeGithubText}{github.com/yourhandle}
+\newcommand{\ResumeGithubURL}{https://github.com/yourhandle}
+\newcommand{\ResumeWebsiteText}{yourwebsite.com}
+\newcommand{\ResumeWebsiteURL}{https://yourwebsite.com}
+
+% ----- Optional toggles -----
+% If true: prefer text-only header + project links (more ATS-friendly).
+% If false: use icons where applicable.
+\newif\ifATS
+\ATStrue
+
+% If true: show the website field (when non-empty). If false: always hide it.
+\newif\ifShowWebsite
+\ShowWebsitetrue
+
+% Optional: enable microtype (typographic polish). If you use strict ATS parsing,
+% validate the output with your target ATS before turning this on.
+\newif\ifUseMicrotype
+\UseMicrotypefalse
+
+% ----- Section toggles (so you don't have to uncomment lines in main.tex) -----
+\newif\ifIncludeCertifications
+\newif\ifIncludeAwards
+\newif\ifIncludeLeadership
+\newif\ifIncludePublications
+
+% Defaults (turn on what you want)
+\IncludeCertificationsfalse
+\IncludeAwardsfalse
+\IncludeLeadershipfalse
+\IncludePublicationsfalse
+
+% ----- PDF metadata -----
+\newcommand{\PDFTitle}{Resume - Your Name}
+\newcommand{\PDFAuthor}{Your Name}
+\newcommand{\PDFSubject}{Resume}
+\newcommand{\PDFKeywords}{software engineer, machine learning, artificial intelligence, resume}

@@ -1,0 +1,106 @@
+%-------------------------
+% Resume template in LaTeX
+% Author: Ayush Morbar (github.com/ayushmorbar)
+% Forked from: Jake Gutierrez's Resume Template (https://github.com/sb2nov/resume)
+% License: MIT
+%
+% Public template notes:
+%   - Edit config/resume-config.tex for your name/links/metadata.
+%   - Edit sections/* for your resume content.
+%
+% Compiler:
+%   pdfLaTeX (recommended)
+%
+% Tested with:
+%   TeX Live 2025+
+%   MiKTeX 24+
+%   Overleaf (TeX Live 2025)
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article} % a4paper is common
+
+% ----- User configuration (identity/links/metadata) -----
+\input{config/resume-config}
+
+% ----- Packages + styling (template internals) -----
+\input{core/resume-style}
+
+% ----- Template macros (template internals) -----
+\input{core/resume-macros}
+
+
+%========================================================
+% Resume Starts Here
+%========================================================
+
+%========================================================
+% Quick Start
+%
+% 1. Edit config/resume-config.tex (name, contact links, PDF metadata).
+% 2. Edit sections/* (Education, Experience, Projects, Skills).
+% 3. Compile using pdfLaTeX.
+%
+% This template is ATS-friendly and designed for software
+% engineering, AI/ML, and computer science resumes.
+%========================================================
+
+\begin{document}
+
+%----------HEADING----------
+% Edit config/resume-config.tex to set your name, tagline, and contact links.
+\ResumeHeader
+
+% Optional Summary (pick ONE approach):
+% 1) Config-driven (edit \ResumeSummary in config/resume-config.tex):
+\ResumeSummarySection
+% 2) File-driven (edit sections/summary.tex):
+% \input{sections/summary}
+
+% ----- Sections (composable) -----
+% Template mode (examples) vs your content is controlled via \TemplateModetrue/false
+% in config/resume-config.tex.
+\ifTemplateMode
+  \input{sections/education}
+  \input{sections/experience}
+  \input{sections/projects}
+  \input{sections/skills}
+\else
+  \input{sections/education.user}
+  \input{sections/experience.user}
+  \input{sections/projects.user}
+  \input{sections/skills.user}
+\fi
+
+% ----- Optional sections (toggle in config/resume-config.tex) -----
+\ifTemplateMode
+  \ifIncludeCertifications
+    \input{sections/certifications}
+  \fi
+  \ifIncludeAwards
+    \input{sections/awards}
+  \fi
+  \ifIncludeLeadership
+    \input{sections/leadership}
+  \fi
+  \ifIncludePublications
+    \input{sections/publications}
+  \fi
+\else
+  \ifIncludeCertifications
+    \input{sections/certifications.user}
+  \fi
+  \ifIncludeAwards
+    \input{sections/awards.user}
+  \fi
+  \ifIncludeLeadership
+    \input{sections/leadership.user}
+  \fi
+  \ifIncludePublications
+    \input{sections/publications.user}
+  \fi
+\fi
+
+%========================================================
+% End of Resume
+%========================================================
+\end{document}
