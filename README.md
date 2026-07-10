@@ -1,6 +1,10 @@
-# LaTeX Resume Template (ATS-friendly)
+# ayx-resume (LaTeX Resume Template, ATS-friendly)
 
-**Author:** Ayush Morbar (github.com/ayushmorbar)
+**Author:** Ayush Morbar (`https://github.com/ayushmorbar`)
+
+**Repository:** `https://github.com/ayushmorbar/ayx-resume`
+
+This is a public, MIT-licensed resume template. You’re free to use, modify, and redistribute it (see `LICENSE`). Suggestions and contributions are welcome via GitHub issues and pull requests.
 
 This repo supports two modes (so you can keep the public template pristine while editing your real resume in the same project):
 - **Template mode**: renders example content + placeholder identity
@@ -13,6 +17,14 @@ This repo supports two modes (so you can keep the public template pristine while
 2. Edit your details in `config/resume-config.user.tex` (name, phone, email, links, metadata, toggles).
 3. Edit your content in `sections/*.user.tex`.
 4. Compile with **pdfLaTeX** (recommended).
+
+## Use on Overleaf
+1. Download this repo as a ZIP (or clone it).
+2. In Overleaf: New Project > Upload Project > Upload `.zip`.
+3. Set `main.tex` as the root document if Overleaf doesn’t pick it automatically.
+4. Compile with **pdfLaTeX**.
+
+If you publish this as an Overleaf template, please keep the attribution to Ayush Morbar and the MIT license intact.
 
 ## Template design goals
 - **Safe by default**: no real personal data required to build.
@@ -57,7 +69,9 @@ Use `\ProjectLinksAuto{<github-url>}{<demo-url>}` to auto-select text vs icons b
 - If publishing publicly, consider keeping your real resume on a private branch/repo.
 
 ## Attribution
-Forked from Jake Gutierrez’s resume template (see `archive/jake.tex`).
+This template is maintained by Ayush Morbar.
 
+Originally forked/inspired by Jake Gutierrez’s resume template (see `archive/jake.tex`).
+not to
 ## License
 MIT (see `LICENSE`).
